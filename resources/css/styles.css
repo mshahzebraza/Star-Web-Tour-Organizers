@@ -1,0 +1,1008 @@
+
+/* font:    italic         small-caps      bold            12px/30px                   Georgia, serif; */
+/* font:    font-style     font-variant    font-weight     font-size/line-height       font-family; */
+
+
+:root{
+    --prime:#f52972;    
+    --grey:#111111;
+    --liteA:#e5e5e5;
+    --lite:#f0f0f0;
+    --fh1: normal normal bold 120px/115px 'Bebas Neue';
+    --fh2: normal normal normal 100px/20px 'futura';
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    text-rendering: optimizeLegibility;
+    font-size: 100%;
+    font-family: lato;
+    background-size: cover;
+    transition: all .2s ease;
+    /* overflow-x: hidden; */
+}
+/* ------------------------- */
+/* Global */
+/* ------------------------- */
+
+p{
+    font-size: 1.3rem;
+    font-weight: 100;
+    text-align: justify;
+}
+
+p.imp{
+    font-weight: 500;
+    font-size: 1.1rem; 
+}
+
+h3{
+    font-size: 1.4rem;
+    text-transform: uppercase;
+}
+
+
+section{
+    padding: 60px 0;
+}
+.wrapper{
+    max-width: 1140px;
+    width: 90% ;
+    margin: auto;
+}
+
+
+/* Containing Floats : group = parent of floats */
+.group::after,
+.group::before{
+    content: "";
+    display: table;
+}
+
+.group{
+    clear: both;
+}
+.group::after{
+    clear: both;
+    *zoom: 1; /* notice the asterisk sign */
+}
+
+
+.titleBox,
+.titleBoxLite{
+    margin-bottom: 30px;
+}
+
+.titleBox::after,
+.titleBoxLite::after{
+    display: block; /* necessary */
+    content: ""; /* necessary */
+    width: 100px;
+    margin-top: 20px;
+    height: 3px;
+    border-radius: 12px;
+    background-color: var(--prime);
+}
+
+.titleBox h2,
+.titleBoxLite h2{
+    font-size: 3em;
+    font-weight: 400;
+    color: var(--prime);
+}
+
+.titleBox p,
+.titleBoxLite p{
+    font-size: 1.4em;
+    font-weight: 100;
+}
+
+.titleBoxLite p{
+    color: var(--lite);
+}
+
+
+
+/* ---------------------------- */
+/* Header */
+/* ---------------------------- */
+
+header{
+    /* width: 100%; */
+    /* Cant use 'vw' */
+    height: 100vh;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(../img/HeaderAssets/HeroImage.png);
+    /* strange path logic */
+    background-size: cover;
+    background-attachment: fixed;  
+    overflow: hidden;
+}  
+
+nav{
+    width: 100vw;
+    background-color: var(--lite);
+    /* background-color: rgba(216, 209, 209, 0.123); */
+}
+
+.logo{
+    width: 100px;
+    margin: 15px 0;
+    height: auto;
+    float: left;
+}
+
+.mainNav ul{
+    list-style: none;
+    float: right;
+}
+
+.mainNav ul li {
+    display: inline-block;  /* float: left; */
+}
+
+.mainNav ul li a:link,
+.mainNav ul li a:visited{
+    font-size: 1.1em;
+    font-weight: 400;
+    text-transform: uppercase;
+    color: inherit;
+    padding-left: 50px;
+    line-height: 75px;
+}
+.mainNav ul li a:hover,
+.mainNav ul li a:active{
+    color: var(--prime);
+}
+
+.heroTextBox{
+    /* float: left; */
+    position: absolute;
+    width: 1140px;
+    /* necessary for left align, add bg to see why */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.heroText{
+    font-size: 4.5rem;
+    color: whitesmoke;
+    margin-bottom: 25px;
+    font-weight: 100;
+    /* border-bottom: 2px solid var(--prime); */
+    /* padding-bottom: 20px; */
+}
+
+.heroText::after{
+    /* border-bottom: 1px solid var(--prime); */
+    width: 20px;
+    height: 2px;
+    /* display: inline-block; */
+    background-color: var(--prime);
+}
+
+.heroBtn:link,
+.heroBtn:visited{
+    display: inline-block;
+    color: whitesmoke;
+    text-transform: uppercase;
+    font-weight: 400;
+    background-color: var(--prime);
+    padding: 15px 40px;
+    margin-right: 20px;
+}
+
+
+.heroBtn:link:last-child,
+.heroBtn:visited:last-child{
+    display: inline-block;
+    color: #333333;
+    text-transform: uppercase;
+    font-weight: 400;
+    background-color: white;
+    margin: none;
+}
+
+/* ---------------- */
+/* About Us */
+/* ---------------- */
+
+
+p.intro{
+    text-indent: 100px;
+    text-align: justify ;
+}
+
+.team{
+    display: flex;
+}
+
+.teamBox{
+    /* background-color: var(--grey); */
+    flex: 1;
+    height: 350px;
+    margin: 20px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+.teamBox:first-child{
+    background-image: linear-gradient(rgba(0, 0, 0, 0.041), rgba(0, 0, 0, 0.089)), url(../img/team1.jpg);
+    /* Breakthrough: url path problem
+        Option 1 : starting without anything
+            This will look for whatever is specified directly inside the folder in which the style sheet is located. For instance       'url(img/hero.jpg)' = 'url(../css/img/hero.jpg)' = 'url(./img/hero.jpg)'----> {stylesheet folder}/img/hero.jpg
+        
+        Important Tip : 
+            '..' = 'back folder'
+
+        Option 2 : starting with ' ../ '
+            This ( '..' ) gets you one step back from the stylesheet folder to a place where you can use forward slash '/' to either go back into stylesheet folder OR you can choose to visit the folders which are siblings to the parent folder of stylesheet, which in this case is resources.
+    */
+    background-position-y: 30%;
+    margin-left: 0;
+}
+
+.teamBox:nth-child(2){
+    background-image: linear-gradient(rgba(0, 0, 0, 0.041), rgba(0, 0, 0, 0.089)),url(../img/team2.jpg);
+}
+.teamBox:last-child{
+    background-image: linear-gradient(rgba(0, 0, 0, 0.041), rgba(0, 0, 0, 0.089)),url(../img/team3.jpg);
+    background-position-y: 10%;
+    overflow: hidden;
+    margin-right: 0;
+}
+
+
+.teamTextBox{
+    /* max-width:320px; */
+    background-color: var(--prime);
+    /* padding: 10px 10px ; */
+    position: absolute;
+    left: 50%;
+    bottom: 20px;
+    transform: translateX(-50%);
+    opacity: .8;
+    /* border-radius: 2px; */
+}
+.teamBox:not(:first-child) .teamTextBox{
+    background-color: var(--grey);
+}
+
+.teamTextBox .imp{
+    text-align: center;
+    color: var(--lite);
+    width: max-content;
+    padding: 10px 20px;
+}
+
+
+/* -------------- */
+/* Places */
+/* -------------- */
+
+.places{
+    background-color: var(--grey);
+}
+
+.placeBoxHolder{
+    /* margin: 0 5% auto; */
+    text-align: center;
+}
+
+.placeBox{
+    width: 48%;
+    /* min-height: 400px; */
+    /* min-height was causing problem for step 2 */
+    height: 400px;
+    /* Step 1: placePic height cover */
+    color: var(--grey);    
+    background-color: var(--lite);
+    float: left;
+    margin: 0 0 50px 0;
+    border: 2px solid var(--prime);
+    overflow: hidden;
+    position: relative;
+    /* Step 3: placePic height covering */
+}
+
+.placeBox:not(:first-child){ /* Selected placeBox */
+    border: 2px solid var(--lite);
+}
+
+.placeBox:nth-child(even){ /* Every right Box  */
+    float: right;
+}
+
+
+.placeBox h3{
+    padding: 15px 0;
+}
+
+.placePic{
+    padding: 25px 40px;
+    background-color: var(--prime);
+    color: var(--lite);
+    
+    height: 100%;
+    /* Step 2: placePic height covering  */
+    /* This when completed would should take less height than 100% to accomodate the h3 tag above... as the height of h3 is not known so instead of doing maths we make overflow hidden */
+    /* height: 347px; - height of h3 subtracted from total*/
+}
+
+
+/* 
+.placePic p:first-child{ Addresses only the simple p tag and not the following p.imp tag
+} */
+
+.placePic p.imp{
+    color: var(--prime);
+    font-size: 1.15rem;
+    padding: 5px 0;
+    /* float: right; */
+    position: absolute;
+    bottom: 25px;
+    right: 40px;
+}
+
+#place1{
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),url(../img/city1.jpg);
+}
+#place2{
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),url(../img/city2.jpg);
+}
+#place3{
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),url(../img/city3.jpg);
+}
+#place4{
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),url(../img/city4.jpg);
+}
+
+/* ------------------------ */
+/* Special Services */
+/* ------------------------ */
+
+
+.serviceBox{
+    width: 25%;
+    /* border: 2px solid black; */
+    float: left;
+    /* height: 300px; */
+    /* 
+    The reason for images to not show up unles a height is specified is bcz its a bg-img and it will fill in only the area of div element if it has any content.
+    One may argue that,
+            'Hey, there is content in the .serviceBox element and that content is the anchor tag with the description in it. So, technically there has it be a height of the .serviceBox container even if its fit to the size of the description enclosed in anchor tags."
+    But it is to be notedd that the anchor tags have been 'positioned' using position properties. and herefore are removed from the naturat flow of document.
+    */
+    position: relative;
+    /* overflow: hidden; */
+}
+
+
+
+.serviceBox .serviceName:link,
+.serviceBox .serviceName:visited{
+    display: block;
+    /* position: absolute; */
+    bottom: 0px;
+    width: 100%;
+    padding-bottom: 10px;
+    text-align: center;
+    font-size: 1.2em;
+    font-weight: 400;
+    opacity: .9;
+    color: var(--lite);
+    background-color: var(--grey);
+}
+
+
+
+/* 
+.serviceBox:nth-child(even) .serviceName,
+.serviceBox:nth-child(even) .serviceName{
+    background-color: var(--lite);
+} */
+
+.serviceBox .serviceName:hover,
+.serviceBox .serviceName:active{
+    color: var(--prime);
+    background-color: var(--grey);
+}
+
+
+/* ----------------- */
+/* How to Register */
+/* ----------------- */
+
+.registration{
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.2)),url(../img/heroHeader2.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.stepCard{
+    height: 400px;
+    width: 30%;
+    margin-right: 5%;
+    float: left;
+    /* background-color: red; */
+}
+.stepCard:last-child{
+    margin: 0;
+}
+
+.stepCard:nth-child(1) .stepVisual{
+    background-image: linear-gradient(rgba(0, 0, 0, 0.185), rgba(0, 0, 0, 0.26)),url(../img/step1.jpg);
+    
+}
+
+.stepCard:nth-child(2) .stepVisual{
+    background-image: linear-gradient(rgba(0, 0, 0, 0.219), rgba(0, 0, 0, 0.068)),url(../img/step2.jpg);
+    
+}
+
+.stepCard:nth-child(3) .stepVisual{
+    background-image: linear-gradient(rgba(0, 0, 0, 0.199), rgba(0, 0, 0, 0.7)),url(../img/step3.jpg);
+    
+}
+
+.stepVisual{
+    height: 300px;
+    clear: both;
+    border: 2px solid var(--lite);
+    background-size: cover;
+    margin-bottom: 20px;
+}
+
+.stepNumber{
+    width: 50px;
+    text-align: center;
+    line-height: 50px;
+    background-color: var(--lite);
+    font-size: 1.5em;
+}
+
+.stepCard p {
+    color: var(--lite);
+    font-size: 1.4rem;
+}
+
+/*-------------------------------------------*/
+/* Farnchise Section */
+/*-------------------------------------------*/
+
+section.franchiseSection{
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),url(../img/franchiseBG.jpg);
+}
+
+.franchise{
+    float:left;
+    /* height:350px; */
+    background-color: #f0f0f0;
+    width: 23.5%;
+    margin-right:2%;
+    background: var(--lite);
+
+}
+.franchise:last-child{
+    margin: 0;
+}
+
+.franchise .title{
+    text-align: center;
+    line-height: 50px;
+    color: var(--lite);
+    background-color: var(--grey);
+}
+.franchise .infoSet{
+    height: 310px;
+    padding: 30px;
+}
+.franchise .info{
+    color: var(--grey);
+    margin-bottom: 25px;
+}
+
+.franchise .info::after{
+    content: "";
+    height: 2px;
+    width: 80px;
+    display: block;
+    background-color: var(--grey);
+    margin: auto;
+    margin-top: 25px;
+}
+.franchise .info:last-child::after{
+    visibility: hidden;
+}
+
+.franchise .info p,
+.franchise .info span{
+    display: block;
+    /* background: green; */
+    text-align: center;
+}
+.franchise .info p{
+    font-size: 1.4rem;
+}
+.franchise .info span{
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+/*-------------------------------------------*/
+/* Customers Section */
+/*-------------------------------------------*/
+.customers{
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),url(../img/BgCustomers.jpg);
+    background-size: cover;
+    background-position: right;
+    
+}
+
+.customerContainer{
+    width:100%;
+    max-width:700px;
+    margin: auto;
+}
+
+.customer{
+    background-color: var(--lite);
+    color: var(--grey);
+    max-height: 300px;
+    margin-bottom: 50px;
+    position: relative;
+    overflow: hidden;
+}
+
+.customer::after{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* background-color: var(--prime); */
+    /* opacity: 0.3; */
+    cursor: pointer;
+}
+.customer:hover{
+    background-color: var(--grey);
+}
+
+.customer:hover .review,
+.customer:hover .info{
+    transition: color .2s;
+    color: var(--prime);
+}
+
+.customer .photo{
+    float: left;
+    width: 35%;
+    object-fit: cover;
+    padding: none;
+}
+.photo::after{
+    clear: left;
+}
+.customer .photo img{
+    width: 100%;
+    height: 50vh;
+    object-fit:cover;
+    background-color: red;
+    /* object-position:0px -30px ; */
+}
+.customer .description{
+    float: left;
+    width: 65%;
+    /* height: 40vh; */
+    padding:  60px 50px 120px;
+}
+.customer .description .info{
+    position: absolute;
+    right: 20px;
+    color: var(--prime);
+    bottom: 20px;
+}
+
+.customer .review{
+    position: relative;
+    font-size: 1.2rem;
+    text-align: justify;
+    /* background-color: red; */
+    /* background-color: red; */
+}
+
+.customer .description .review::before,
+.customer .description .review::after{
+    display: block;
+    font-size: 3rem;
+    font-family: 'lato','Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    position: absolute;
+}
+
+.customer .description .review::before{
+    content: '"';
+    left: -20px;
+    top: -40px;
+}
+
+.customer .description .review::after{
+    content: '"';
+    bottom: -55px;
+    right: -20px;
+}
+
+.customer .info p,
+.customer .info h3{
+    margin: 0;
+    padding: 0;
+    clear: both;
+    float: right;
+    /* line-height: 0; */
+}
+
+/*-------------------------------------------*/
+/* Booking Plans */
+/*-------------------------------------------*/
+
+
+
+/* ------------- card styles ------------- */
+.planCard{
+    width: 30%;
+    overflow: hidden;
+    margin-right: 5%;
+    float: left;
+    color: var(--lite);
+    box-shadow: 0px 0px 10px rgba(0,0,0, 0.2);
+    background-size: cover;
+    position: relative;
+}
+.planCard:last-child{
+    margin-right: 0;
+}
+
+/* ------------- card image backgrounds ------------- */
+
+
+.planCard:nth-child(1)  {
+    background: url(../img/plan1.jpg) 30% 0% /cover ;    
+}
+
+.planCard:nth-child(2)  {
+    background: url(../img/plan2.jpg) 70% 70% /cover ;    
+}
+
+.planCard:nth-child(3)  {
+    background: url(../img/plan3.jpg) 50% 70% /cover ;    
+}
+
+/* ------------- plancard hover image fade ------------- */
+.planSection{
+    background-color: #f0f0f0;
+}
+.planCard .container{
+    padding: 30px 0;
+    text-align: center;
+    opacity: 0;
+}
+.planCard:hover{
+    cursor: pointer;
+}
+
+.planCard:hover .container{
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.7));
+    opacity: 1;
+}
+
+/* ------------- text copies inside ------------- */
+
+.planCard .copy{
+    margin: 15px auto;
+}
+
+.planCard .copy::after{ /* Lesson : Never leave space while defining pseudo class e.g element'_'::pseudo-class */
+    content: "";
+    display: block;
+    width: 60px;
+    height: 3px;
+    border-radius: 2px;
+    background: var(--prime);
+    margin: 15px auto; /* Lesson: Margins of consecutive elements coincide and overlap. 
+                        e.g elm1 bottom margin 10 + elm2 top margin 10 = total 10 margin in-between */
+}
+.planCard .copy:last-child::after{ /* Lesson : Never leave space while defining pseudo class e.g element'_'::pseudo-class */
+    content: "";
+    display: none;
+    width: 60px;
+    height: 3px;
+    border-radius: 2px;
+    background: var(--prime);
+    margin: 15px auto; /* Lesson: Margins of consecutive elements coincide and overlap. 
+                        e.g elm1 bottom margin 10 + elm2 top margin 10 = total 10 margin in-between */
+}
+.planCard .copy h3{
+    text-transform: none;
+    letter-spacing: .5px;
+    word-spacing: 2px;
+}
+
+.planCard .copy .bold{
+    font-size: 1.3rem;
+}
+
+.planCard .copy :not(.bold){
+    font-weight: 100;
+}
+
+/* ------------- title box at bottoms ------------- */
+
+.planCard .title{
+    padding: 20px;
+    background-color: var(--grey);
+    color: var(--lite);
+    font-size: 1.2rem;
+    font-weight: 500;
+    text-align: center;
+    text-transform: uppercase;
+    position: relative;
+}
+
+.planCard:hover .title{
+    background-color: var(--prime);
+    color: var(--grey);
+}
+
+.planCard:hover .title::before{
+    background-color: var(--lite);
+}
+.planCard .title::before{
+    content: "";
+    background:var(--prime);
+    width: 110%;
+    height: 2px;
+    margin: auto;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+/*-------------------------------------------*/
+/* contact Form */
+/*-------------------------------------------*/
+
+form>*{
+    display: block;
+    margin-bottom: 10px;
+    /* border-right: 20px dashed green; */
+    width: 100%;
+    border-radius: 2px;
+    outline: none;
+}
+
+label{
+    /* background-color: yellowgreen; */
+    font-size: 1.3rem;
+    margin-left: 10px;
+    margin-right: 50px;
+    position: relative;
+}
+
+option,select{
+    opacity: .7;
+}
+
+input, select, textarea{
+    margin-bottom: 50px;
+    padding: 10px;
+    border: 0;
+    border-bottom: 1px solid var(--lite);
+}
+
+input::placeholder, 
+textarea::placeholder{
+    color: var(--liteA);
+}
+
+textarea{
+    border: 1px solid var(--lite);
+}
+
+
+/* Lesson (Styling Checkbox):
+        to style a checkbox you have to style something placed after the input[type:checkbox] element (can be a div, a span, or even a label ) and hide the checkbox element itself... Then use the pseudo classes:after & before to design the check marks etc...
+        In the end to link the hover and check states of hiddent checkbox element with the new styled checkbox... You can use the adjacent sibling combinator '+' or general sibling combinator '~', using the pseudo selector:checked with the hidden input[type:checkbox] element.
+
+        just style a checkbox and place it after the input. Use positioning for the checkbox relative to a container which can be combined one for checkbox and input both or a seperate container after the input with the checkbox in it 
+*/
+/* Lesson (linking the old checkbox with the newone):
+        for attribut for the label tag has to be linked with the id atttribute of the input.
+        https://css-tricks.com/the-checkbox-hack/ <--- Visit the link
+        https://medium.com/claritydesignsystem/pure-css-accessible-checkboxes-and-radios-buttons-54063e759bb3
+
+        The following things are required to make the checkbox work:
+
+        - The label must appear after the <input type="checkbox">
+        - The id attribute is required on the <input type="checkbox">
+        - The for attribute is required on the label
+        - Clickable area can only be a part of the label either placed inside label tag or its pseudo classes
+        - if there is a text in the label tag it will also trigger the check
+        - although trigger is only from label you can visualize the check elsewhere. in that case you will have to click the label to toggle the checkbox div (which must be after input)
+*/
+
+
+#ccb {
+    /* width: 200px;  */
+    position: absolute;
+    cursor: pointer;
+    visibility: hidden;
+
+}
+
+/* Label containing text - Linked with CB */
+.cCheckBox{
+    position: relative;
+    width: fit-content; /* bcz theu pseudo elements are positioned according to the right end, which by default goes to 100% of width */
+    cursor: pointer;
+    margin-bottom: 60px;
+}
+
+/* ------------- Checkbox Normal ------------- */
+.cCheckBox::before {
+    display: block;     /* If you're using the positioning then you dont need to use this to make it visible
+                        however, this will make the element follow the block behaviour in the positioned flow of the document with other positioned elements    */
+
+    content: "";
+    width: 25px;
+    height:25px;
+    /* background-color: aquamarine; */
+    position: absolute;
+    right: -100px;
+
+    border-radius: 2px;
+    border: 1.5px solid var(--grey);
+    opacity: .7;
+}
+
+
+/* ------------- Checkmark normal ------------- */
+.cCheckBox::after{
+    display: block;
+    content: "";
+    width: 6px;
+    height:18px;
+    transform: translate(-10px, -23px) rotate(45deg) ;
+    position: absolute;
+    right: -100px;
+    
+    border-color: var(--grey);
+    border-width: 0 2px 2px 0;
+    background-color: transparent;
+    border-style: solid;
+    opacity: 0.7;
+}
+
+/* ------------- hover state of unchecked ------------- */
+
+#ccb:not(:checked) ~ .cCheckBox:hover::before{ /* Box */
+    opacity: .7;
+    background-color: var(--grey);
+}
+
+#ccb:not(:checked) ~ .cCheckBox:hover::after{ /* Mark */
+    opacity: 1;
+    border-color: var(--lite);
+}
+
+/* ------------- hover state of checked ------------- */
+
+#ccb:checked ~ .cCheckBox:hover::before{ /* Box */
+    opacity: .7;
+}
+
+#ccb:checked ~ .cCheckBox:hover::after{ /* Mark */
+    /* opacity: .5; */
+}
+
+/* ------------- checked  states ------------- */
+
+#ccb:checked ~ .cCheckBox::after{ /* Box */
+    opacity: 1;
+    border-color: var(--lite);
+}
+
+#ccb:checked ~ .cCheckBox::before{ /* Mark */
+    opacity:1;
+    background-color: var(--prime);
+    border-color: var(--prime);
+}
+
+
+
+/* ------------- Submit Button ------------- */
+
+input[type="submit"]{
+    cursor: pointer;
+}
+
+input[type="submit"]:hover{
+    background-color: var(--grey);
+    color: var(--lite);
+
+}
+
+
+/*-------------------------------------------*/
+/* Footer */
+/*-------------------------------------------*/
+
+.footer{
+    background-color: var(--grey);
+}
+
+.footer a{
+    color: var(--lite);
+    text-decoration: none;
+    text-emphasis: none;
+    font-size: 20px;
+}
+
+.col{
+    width:30%;
+    overflow: hidden;
+    float: left;
+    margin-right: 5%;
+}
+.col:last-child{
+    margin: 0;
+}
+.col h1{
+    color: var(--prime);
+    /* width: fit-content; */
+    text-transform: uppercase;
+    margin-bottom: 60px;
+    font-size: 35px;
+    font-weight: 100;
+    position: relative;
+}
+.col h1::after{
+    position: absolute;
+    content: "";
+    width: 40px;
+    height: 2px;
+    bottom: -20px ;
+    background-color: var(--prime);
+    /* display: block; */
+}
+.col a{
+    display:block;
+    margin-bottom: 25px;
+}
+.col1 h1::after{
+    left: 0%;
+}
+.col2 h1::after{
+    left: 50%;
+    transform: translate(-50%,0);
+}
+.col3 h1::after{
+    right: 0%;
+}
+.col2{
+    text-align: center;
+}
+.col3{
+    text-align: right;
+}
+.col a.socialBtn{
+    background-color: var(--prime);
+    padding: 10px 5px;
+    text-align: center;
+    width: 200px;
+    float: right;
+}
